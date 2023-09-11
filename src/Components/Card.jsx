@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { useGlobalContext } from './utils/global.context';
 
 
 const Card = ({ name, username, id }) => {
 
+  const [agregado, estaAgregado] = useState(false)
+  const { addFavs } = useGlobalContext()
+
+
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
+    addFavs({name, username, id})
+    //localStorage.setItem("favs" ,JSON.stringify({name, username, id}))
   }
 
   return (
     <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
+        <a href={`detail/${id}`}> Detalle </a>
+        <div>
+          <h3> {name} </h3>
+          <p> {username} </p>
+        </div>
 
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
 
