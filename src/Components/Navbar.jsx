@@ -1,16 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import "../App.css";
+import { NavLink } from 'react-router-dom';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import { IconButton } from '@mui/material';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
-const Navbar = () => {
+const Navbar = () => {  
 
   return (
-    <nav>
-      <h3><a href='favs'>Favs</a></h3>
-      {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
-      <button>Change theme</button>
-    </nav>
+    <header>
+      <nav className='header'>
+          <NavLink to="/" className='brand'>Clínica <br/> Médica</NavLink>
+          <div className='contenedorMenu'>
+              <ul className='menu'>
+                  <NavLink to="/" className="menuLista">HOME</NavLink>
+                  <NavLink to="/favs" className="menuLista">DESTACADOS</NavLink>
+                  <NavLink to='/contact' className="menuLista">CONTACTO</NavLink>
+              </ul>
+              <IconButton>
+                <DarkModeOutlinedIcon className='darkMode'/>
+              </IconButton>
+          </div>
+      </nav>
+    </header>
   )
 }
 
 export default Navbar
+
+//<button onClick={handleChangeTheme} style={{background: themes.background, color:themes.font}}>Change theme</button>

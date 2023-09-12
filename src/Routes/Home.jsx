@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../Components/Card'
+import '../App.css';
+import { Box, Grid } from '@mui/material';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -25,15 +27,18 @@ const Home = () => {
 
   return (
     <main className="" >
-      <h1>Home</h1>
+      <h1 className='tituloHome'>Home</h1>
       <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */
-          loading? (<p>Cargando...</p>) : (
-          dentists.map((dentist) =>
-            <Card name={dentist.name} username={dentist.username} id={dentist.id} />
-          )
-            )
-        }
+        <Box mt={2}>
+          <Grid container spacing={12}>
+            {loading? (<p>Cargando...</p>) : (
+              dentists.map((dentist) => 
+              <Grid item xs={2}>
+                <Card name={dentist.name} username={dentist.username} id={dentist.id} />
+              </Grid>)
+            )}
+          </Grid>
+        </Box>
       </div>
     </main>
   )

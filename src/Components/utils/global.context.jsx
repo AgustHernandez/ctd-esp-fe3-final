@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const initialState = {theme: "", data: []}
 
@@ -6,14 +6,28 @@ const ContextGlobal = createContext();
 
 export const useGlobalContext = () => useContext(ContextGlobal)
 
+export const themes = {
+  light:{
+      font: "black",
+      background: "white"
+  },
+  dark: {
+      font: "white",
+      background:"black"
+  }
+};
+
+export const ThemeContext = createContext(themes.light);
+
 const ContextProvider = ({ children }) => {
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
-  const value = useMemo(() => [destacados, setDestacados], [destacados])
+  const [destacados, setDestacados] = useState([])
 
   useEffect(() => {
-  const favsData = JSON.parse(localStorage.getItem('destacados'))
+  const favsData = localStorage.getItem('destacados')
+  console.log(destacados)
     if (favsData) {
-      setDestacados(favsData)
+      setDestacados(JSON.parse(favsData))
     }
   }, [])
 
@@ -34,9 +48,14 @@ const ContextProvider = ({ children }) => {
   const isInFavs = (id) => {
     return destacados.some((dentist) => dentist.id === id)
   }
+  
+  const deleteFavs = (id) => {
+    setDestacados(destacados.filter((p)=> p.id !== id))
+  }
+
 
   return (
-    <ContextGlobal.Provider value={{destacados, addFavs}}>
+    <ContextGlobal.Provider value={{destacados, addFavs, isInFavs, deleteFavs, themes}}>
       {children}
     </ContextGlobal.Provider>
   );

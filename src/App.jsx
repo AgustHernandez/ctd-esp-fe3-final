@@ -5,6 +5,7 @@ import Home from "./Routes/Home";
 import Favs from './Routes/Favs';
 import Contact from './Routes/Contact';
 import Detail from './Routes/Detail';
+import './App.css';
 
 
 function App() {
