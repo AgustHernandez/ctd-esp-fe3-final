@@ -1,4 +1,3 @@
-import React, { useContext, useState } from "react";
 import { useGlobalContext } from './utils/global.context';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';

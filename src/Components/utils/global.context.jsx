@@ -1,31 +1,67 @@
-import { createContext, useContext, useEffect, useState } from "react";
-
-export const initialState = {theme: "", data: []}
+import { createContext, useContext, useEffect, useState, useReducer } from "react";
 
 const ContextGlobal = createContext();
 
 export const useGlobalContext = () => useContext(ContextGlobal)
 
-export const themes = {
-  light:{
-      font: "black",
-      background: "white"
+/*CONTEXT THEME*/
+const themeReducer = (state, action) => {
+  switch(action.type) {
+    case "LIGHT":
+      return {...state,
+        theme:{
+          name: action.type,
+          font: "black",
+          background:"white"
+        }
+      }
+    case "DARK":
+      return {...state,
+        theme:{
+          name: action.type,
+          font: "white",
+          background:"black"
+        }
+      }
+    default:
+      return state
+  }
+}
+
+/*export const themes = {
+  light: {
+    font: "black",
+    background: "white"
   },
   dark: {
-      font: "white",
-      background:"black"
+    font: "white",
+    background: "black"
   }
-};
 
-export const ThemeContext = createContext(themes.light);
+}*/
 
 const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
+  /*CONTEXT THEME*/
+  const initialState = {
+    theme: localStorage.getItem("theme") || "LIGHT"
+  }
+
+  const [state, dispatch] = useReducer(themeReducer, initialState)
+
+  useEffect(() => {
+    console.log(state)
+    localStorage.setItem("theme", JSON.stringify(state.theme))
+  }, [state.theme])
+
+  /*const handlerChangeTheme = () => {
+    theme === themeReducer.dark ? setTheme(light) : setTheme(dark)
+  }*/
+
+  /*CONTEXT FAVS*/
   const [destacados, setDestacados] = useState([])
 
   useEffect(() => {
   const favsData = localStorage.getItem('destacados')
-  console.log(destacados)
     if (favsData) {
       setDestacados(JSON.parse(favsData))
     }
@@ -55,7 +91,7 @@ const ContextProvider = ({ children }) => {
 
 
   return (
-    <ContextGlobal.Provider value={{destacados, addFavs, isInFavs, deleteFavs, themes}}>
+    <ContextGlobal.Provider value={{destacados, addFavs, isInFavs, deleteFavs, state, dispatch}}>
       {children}
     </ContextGlobal.Provider>
   );

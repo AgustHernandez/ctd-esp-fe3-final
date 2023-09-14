@@ -1,12 +1,14 @@
-import React, { useContext } from 'react'
 import "../App.css";
 import { NavLink } from 'react-router-dom';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import { IconButton } from '@mui/material';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import { Button } from '@mui/material';
+import { useGlobalContext } from './utils/global.context';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Navbar = () => {  
+  const {state, dispatch} = useGlobalContext();
 
   return (
     <header>
@@ -18,9 +20,15 @@ const Navbar = () => {
                   <NavLink to="/favs" className="menuLista">DESTACADOS</NavLink>
                   <NavLink to='/contact' className="menuLista">CONTACTO</NavLink>
               </ul>
-              <IconButton>
-                <DarkModeOutlinedIcon className='darkMode'/>
-              </IconButton>
+              { state.theme.name === "LIGHT" ?
+                <Button onClick={()=>dispatch({type: 'DARK'})}>
+                  <DarkModeOutlinedIcon className='darkMode'/>
+                </Button>
+              :
+                <Button onClick={()=>dispatch({type: 'LIGHT'})}>
+                  <LightModeOutlinedIcon className='darkMode'/>
+                </Button>
+            }
           </div>
       </nav>
     </header>
