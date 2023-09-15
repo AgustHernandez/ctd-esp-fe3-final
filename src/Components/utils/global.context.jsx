@@ -11,16 +11,12 @@ const themeReducer = (state, action) => {
       return {...state,
         theme:{
           name: action.type,
-          font: "black",
-          background:"white"
         }
       }
     case "DARK":
       return {...state,
         theme:{
           name: action.type,
-          font: "white",
-          background:"black"
         }
       }
     default:
@@ -28,37 +24,23 @@ const themeReducer = (state, action) => {
   }
 }
 
-/*export const themes = {
-  light: {
-    font: "black",
-    background: "white"
-  },
-  dark: {
-    font: "white",
-    background: "black"
-  }
-
-}*/
-
 const ContextProvider = ({ children }) => {
+  const initialTheme = {"name":"LIGHT","font":"black","background":"white"};
   /*CONTEXT THEME*/
   const initialState = {
-    theme: localStorage.getItem("theme") || "LIGHT"
+    theme: JSON.parse(localStorage.getItem("theme")) || initialTheme
   }
 
   const [state, dispatch] = useReducer(themeReducer, initialState)
 
   useEffect(() => {
-    console.log(state)
     localStorage.setItem("theme", JSON.stringify(state.theme))
   }, [state.theme])
 
-  /*const handlerChangeTheme = () => {
-    theme === themeReducer.dark ? setTheme(light) : setTheme(dark)
-  }*/
 
   /*CONTEXT FAVS*/
   const [destacados, setDestacados] = useState([])
+
 
   useEffect(() => {
   const favsData = localStorage.getItem('destacados')

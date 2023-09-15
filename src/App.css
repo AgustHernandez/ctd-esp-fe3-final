@@ -13,7 +13,17 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
-/*NAVBAR*/
+.appLight {
+  background-color: white;
+  color: black;
+}
+
+.appDark {
+  background-color: #212121;
+  color: #BFBFBF;
+}
+
+/*NAVBAR LIGHT*/
 
 .header {
   background-color: #00008B;
@@ -21,6 +31,10 @@ html {
   width: auto;
   display: flex;
   justify-content: space-around;
+}
+
+.appDark .header {
+  background-color: #404040;
 }
 
 .brand {
@@ -33,10 +47,15 @@ html {
   text-decoration: none;
 }
 
+.appDark .brand {
+  color: #BFBFBF;
+}
+
 .contenedorMenu {
   display: flex;
   justify-content: center;
 }
+
 .menu {
   display: inline-flex;
   justify-content: center;
@@ -49,12 +68,24 @@ html {
   padding-right: 20px;
 }
 
-.menu :link {
+.appDark .menu {
+  color: #BFBFBF;
+}
+
+.appLight .menu :link {
   color: white;
 }
 
-.menu :visited {
+.appDark .menu :link {
+  color: #BFBFBF;
+}
+
+.appLight .menu :visited {
   color: white;
+}
+
+.appDark .menu :visited {
+  color: #BFBFBF;
 }
 
 .menuLista {
@@ -62,15 +93,146 @@ html {
   text-decoration: none;
 }
 
-.darkMode {
+.buttonMode {
   height: 100px;
   color: white;
+}
+
+.appDark .buttonMode {
+  color: #BFBFBF;
 }
 
 /*HOME*/
 
 .tituloHome {
   text-align: center;
-  font-size: 3.5rem;
-  padding: 20px 0px;
+  font-size: 4rem;
+  padding: 50px;
+}
+
+/* CARDS */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  justify-content: center;
+  gap: 30px;
+  border-radius: 10px;
+  padding-bottom: 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 370px;
+  width: 220px;
+  border-radius: 10px;
+  align-content: center;
+  font-size: 1.2rem;
+}
+
+.appDark .card {
+  background-color: #808080;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+}
+
+.imgCard {
+  height: 220px;
+  width: 230px;
+}
+
+.buttonDetalle {
+  width: 120px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #d8afb7;
+}
+
+.appDark .buttonDetalle {
+  background-color: #643e45;
+  color: #BFBFBF;
+}
+
+/*DETAILS*/
+
+.detailTitle {
+  font-size: 4rem;
+  padding: 50px;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: 100px;
+  justify-items: center;
+  justify-content: center;
+}
+
+.imgDetail {
+  width: 500px;
+  height: 500px;
+}
+
+.datosDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
+
+.datosDetail h2 {
+  font-size: 2rem;
+}
+
+/*FAVS*/
+
+.favsTitle {
+  font-size: 4rem;
+  padding: 50px;
+}
+
+.card-grid-favs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  justify-content: center;
+  gap: 30px;
+  border-radius: 10px;
+}
+
+/*FOOTER*/
+
+.footer {
+  background-color: #00008B;
+  height: auto;
+  width: auto;
+  color: #fff;
+}
+
+.appDark .footer {
+  background-color: #404040;
+  color: #BFBFBF;
+}
+
+.icons {
+  padding-bottom: 10px;
+}
+
+.iconsFooter {
+  width: 15px;
+  height: 15px;
+}
+
+.footerTitle {
+  font-size: 1.5rem;
 }

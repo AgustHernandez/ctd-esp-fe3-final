@@ -6,24 +6,24 @@ import Favs from './Routes/Favs';
 import Contact from './Routes/Contact';
 import Detail from './Routes/Detail';
 import './App.css';
-import Layout from "./Components/Layout";
+import { useGlobalContext } from "./Components/utils/global.context";
 
 
 function App() {
+  const {state} = useGlobalContext();
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <Layout>
+      <div className={state.theme.name === "LIGHT" ? 'appLight' : 'appDark'}>
           <Navbar/>
               <Routes>
                 <Route index element={<Home/>} />
                 <Route path="detail/:id" element={<Detail/>} />
                 <Route path="favs" element={<Favs/>} />
+                <Route path="favs/detail/:id" element={<Detail/>} />
                 <Route path="contact" element={<Contact/>} />
               </Routes>
             <Footer/>
-          </Layout>
       </div>
     </BrowserRouter>
   );

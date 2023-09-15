@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className='header'>
+      <nav className= 'header'>
           <NavLink to="/" className='brand'>Clínica <br/> Médica</NavLink>
           <div className='contenedorMenu'>
               <ul className='menu'>
@@ -22,11 +22,11 @@ const Navbar = () => {
               </ul>
               { state.theme.name === "LIGHT" ?
                 <Button onClick={()=>dispatch({type: 'DARK'})}>
-                  <DarkModeOutlinedIcon className='darkMode'/>
+                  <DarkModeOutlinedIcon className='buttonMode'/>
                 </Button>
               :
                 <Button onClick={()=>dispatch({type: 'LIGHT'})}>
-                  <LightModeOutlinedIcon className='darkMode'/>
+                  <LightModeOutlinedIcon className='buttonMode'/>
                 </Button>
             }
           </div>

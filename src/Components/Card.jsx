@@ -1,12 +1,7 @@
 import { useGlobalContext } from './utils/global.context';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
-import { CardActionArea, CardActions } from '@mui/material';
-import { styled } from '@mui/material/styles'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Cards = ({ name, username, id }) => {
   const { addFavs, isInFavs, deleteFavs} = useGlobalContext()
@@ -19,40 +14,40 @@ const Cards = ({ name, username, id }) => {
     deleteFavs(id)
   }
 
-  const BotonDetalle = styled(Button) ({
-    color: '#b5838d',
-  })
-
   return (
-    <Card sx={{ maxWidth: 345 }} variant="outlined">
+    <div className='card'>
+      <div>
         {isInFavs(id) ?
-          <BotonDetalle onClick={deleteFav}>
-            Eliminar de destacados
-          </BotonDetalle>
+          <button className='button' onClick={deleteFav}>
+            <FavoriteIcon fontSize='large'/>
+          </button>
         :
-          <BotonDetalle onClick={addFav}>
-            Agregar a destacados
-          </BotonDetalle>
+          <button className='button' onClick={addFav}>
+            <FavoriteBorderIcon fontSize='large'/>
+          </button>
         }
-        <CardActionArea>
-          <CardMedia component="img" height="140" image="./images/doctor.jpg" alt="foto médico"/>
-          <CardContent>
-            <Typography gutterBottom variant="h4" component="div">
-              {name}
-            </Typography>
-            <Typography variant="h5" color="text.secondary">
-              {username}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      <CardActions>
+      </div>
+      <div>
+        <img src='./images/doctor.jpg' alt="foto médico" className='imgCard'/>
+      </div>
+      <div>
+        <h2>
+          {name}
+        </h2>
+      </div>
+      <div>
+        <h4>
+          {username}
+        </h4>
+      </div>
+      <div>
         <Link to={`detail/${id}`}>
-          <BotonDetalle>
+          <button className='buttonDetalle'>
             Ver detalle
-          </BotonDetalle>
+          </button>
         </Link>
-      </CardActions>
-    </Card>
+      </div>
+    </div>
   );
 };
 
