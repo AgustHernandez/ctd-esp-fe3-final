@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../Components/Card'
 import '../App.css';
+import LoadingSpinner from '../Components/LoadingSpinner';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -29,7 +30,9 @@ const Home = () => {
     <main>
       <h1 className='titles'>Home</h1>
       <div className='card-grid'>
-        {loading? (<p>Cargando...</p>) : (
+        {loading ? 
+          <LoadingSpinner/>
+        : (
           dentists.map((dentist) => 
           <div>
             <Card name={dentist.name} username={dentist.username} id={dentist.id} />

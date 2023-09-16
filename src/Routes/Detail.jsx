@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import LoadingSpinner from './../Components/LoadingSpinner';
 
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -25,12 +26,12 @@ const Detail = () => {
 
   return (
     <div>
-      <h1 className='titles'>Detalle Dentista {id} </h1>
-      <div className='detail'>
+      <h1 className='titles'>Detalle Dentista</h1>
+      <div>
         {loading ? 
-          (<p>Cargando...</p>) 
+          <LoadingSpinner/>
           :
-          <div>
+          <div className='detail'>
             <div>
               <img src="../images/doctor.jpg" alt="foto médico" className='imgDetail'/>
             </div>
