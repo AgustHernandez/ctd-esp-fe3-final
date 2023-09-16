@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <main>
-      <h1 className='tituloHome'>Home</h1>
+      <h1 className='titles'>Home</h1>
       <div className='card-grid'>
         {loading? (<p>Cargando...</p>) : (
           dentists.map((dentist) => 

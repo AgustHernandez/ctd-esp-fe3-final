@@ -9,7 +9,7 @@ const Favs = () => {
   console.log(destacados)
   return (
     <>
-      <h1 className="favsTitle">Dentistas Favoritos</h1>
+      <h1 className="titles">Dentistas Favoritos</h1>
       <div className="card-grid-favs">
         { (destacados.length !== 0) &&
             destacados.map(dentist => <Card name={dentist.name} username={dentist.username} id={dentist.id} />) 

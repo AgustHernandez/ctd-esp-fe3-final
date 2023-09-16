@@ -25,17 +25,23 @@ const Detail = () => {
 
   return (
     <div>
-      <h1 className='detailTitle'>Detalle Dentista {id} </h1>
+      <h1 className='titles'>Detalle Dentista {id} </h1>
       <div className='detail'>
-        <div>
-          <img src="../images/doctor.jpg" alt="foto médico" className='imgDetail'/>
-        </div>
-        <div className='datosDetail'>
-          <h2>Nombre: {dentist.name} </h2>
-          <h2>Email: {dentist.email} </h2>
-          <h2>Telefono: {dentist.phone} </h2>
-          <h2>Sitio Web: {dentist.website} </h2>
-        </div>
+        {loading ? 
+          (<p>Cargando...</p>) 
+          :
+          <div>
+            <div>
+              <img src="../images/doctor.jpg" alt="foto médico" className='imgDetail'/>
+            </div>
+            <div className='datosDetail'>
+              <h2>Nombre: {dentist.name} </h2>
+              <h2>Email: {dentist.email} </h2>
+              <h2>Telefono: {dentist.phone} </h2>
+              <h2>Sitio Web: {dentist.website} </h2>
+            </div>
+          </div>
+        }
       </div>
     </div>
   )

@@ -104,7 +104,7 @@ html {
 
 /*HOME*/
 
-.tituloHome {
+.titles {
   text-align: center;
   font-size: 4rem;
   padding: 50px;
@@ -161,11 +161,6 @@ html {
 
 /*DETAILS*/
 
-.detailTitle {
-  font-size: 4rem;
-  padding: 50px;
-}
-
 .detail {
   display: grid;
   grid-template-columns: 1fr 0.5fr;
@@ -195,11 +190,6 @@ html {
 
 /*FAVS*/
 
-.favsTitle {
-  font-size: 4rem;
-  padding: 50px;
-}
-
 .card-grid-favs {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -208,6 +198,82 @@ html {
   justify-content: center;
   gap: 30px;
   border-radius: 10px;
+}
+
+/*CONTACT*/
+
+.contact {
+  height: 495px;
+}
+
+.contact .titles {
+  padding: 50px 50px 20px 50px;
+}
+
+.pContact {
+  text-align: center;
+  font-size: 1.8rem;
+  padding-bottom: 40px;
+}
+
+.formContact {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 30px;
+}
+
+.formContact form {
+  height: 250px;
+}
+
+.formContact form label {
+  font-size: 1.6rem;
+}
+
+.formContact form input {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.buttonsForm {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.buttonForm {
+  width: 120px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #d8afb7;
+}
+
+.appDark .buttonForm {
+  background-color: #643e45;
+  color: #BFBFBF;
+}
+
+.mensajesForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.msjGracias {
+  font-size: 1.5rem;
+  color: green;
+  text-align: center;
+}
+
+.msjError {
+  font-size: 1.5rem;
+  color: red;
+  text-align: center;
+}
+
+.appDark .msjError {
+  color: rgb(160, 44, 44);
 }
 
 /*FOOTER*/
